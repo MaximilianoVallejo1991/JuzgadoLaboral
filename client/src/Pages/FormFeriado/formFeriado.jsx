@@ -7,7 +7,7 @@ import {
   updateLicencia,
 } from "../../Redux/actions";
 import swal from "sweetalert";
-import { addBusinessDays, format, isWithinInterval } from "date-fns";
+import { addBusinessDays, isWithinInterval } from "date-fns";
 const FormFeriado = () => {
   const dispatch = useDispatch();
   const allLicencias = useSelector((state) => state.allLicencias);
