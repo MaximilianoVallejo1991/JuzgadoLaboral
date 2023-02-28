@@ -41,7 +41,7 @@ const { Abogado, Licencia, Feriados } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Abogado.hasMany(Licencia,{as:'licencias',foreignKey:'abogadoId'})
+Abogado.hasMany(Licencia),{as:'licencias',foreignKey:'abogadoId'};
 Licencia.belongsTo(Abogado,{as:'abogado'});
 Feriados;
 module.exports = {
