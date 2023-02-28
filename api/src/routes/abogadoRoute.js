@@ -27,24 +27,11 @@ router.post("/", async (req, res) => {
 
 //RUTA PARA TRAER EL LISTADO DE TODOS LOS ABOGADOS
 router.get("/", async (req, res) => {
-  let { name } = req.query;
   try {
-    if (name === undefined) {
-      let abogados = await Abogado.findAll();
-      return res.status(200).json(abogados);
-    } else {
-      let abogadosFiltrado = await Abogado.findAll({
-        where: {
-          apellido: {
-            [Op.substring]: `%${name}%`,
-          },
-        },
-      });
-      if (abogadosFiltrado.length === 0) return "No se encontraron resultados";
-      return res.status(200).json(abogadosFiltrado);
-    }
+    const abogados=await Abogado.findAll();
+    return res.status(200).json(abogados)
   } catch (err) {
-    return res.status(400).json({ error: err.message });
+    return res.status(400).json({ error:err.message})
   }
 });
 

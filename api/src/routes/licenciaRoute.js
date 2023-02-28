@@ -28,7 +28,14 @@ router.post("/", async (req, res) => {
 //RUTA PARA TRAER EL LISTADO DE TODAS LAS LICENCIAS
 router.get("/", async (req, res) => {
   try {
-    let licencias = await Licencia.findAll();
+    let licencias = await Licencia.findAll({ 
+      include:{
+        model:Abogado,
+        as:'abogado',
+        attributes:["apellido","nombre"]
+      },
+      attributes:["id","fechaI","dias","fechaF","activo","abogadoId"]
+    });
     return res.status(200).json(licencias);
   } catch (err) {
     return res.status(400).json({ error: err.message });
