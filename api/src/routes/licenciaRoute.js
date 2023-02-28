@@ -1,6 +1,7 @@
 const Router = require("express");
 const router = Router();
 const { Licencia } = require("../db");
+const {Abogado} = require('../db')
 
 //RUTA PARA TRAER UNA LICENCIA POR SU ID
 router.get("/:id", async (req, res) => {
